@@ -9,6 +9,7 @@
     </h:head>
     
     <h:body>
+        
         <ui:composition template="BaseTemplate1.xhtml">
             <ui:define name="body">
                 <div>
@@ -26,11 +27,38 @@
                                 <h:inputText
                                     class="w3-input w3-border"
                                     required="true"
+                                    id="fname"
                                     requiredMessage="Firstname Required"
-                                    >
-                                        
-                                </h:inputText>
+                                    value="#{registrationForm.firstName}"
+                                    validator="#{registrationForm.validateName}"
+                                />
+                                <h:message for="fname"
+                                           id="nameError"/>
                             </f:ajax>
+                        </p>
+                        <p>
+                            <label class="w3-blue w3-padding">
+                                Last Name:
+                            </label>
+                            <f:ajax event="change" 
+                                    render="nameError">
+                                <h:inputText
+                                    class="w3-input w3-border"
+                                    required="true"
+                                    id="lname"
+                                    requiredMessage="LastName Required"
+                                />
+                                <h:message for="lname"/>
+                            </f:ajax>
+                        </p>
+                        <p>
+                            <h:commandButton
+                                style="font-weight: bolder"
+                                class="w3-button
+                                w3-blue w3-padding-large"
+                                value="Submit"
+                                action="success">
+                            </h:commandButton>
                         </p>
                     </h:form>
                 </div>
